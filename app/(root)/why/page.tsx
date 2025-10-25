@@ -74,7 +74,7 @@ export default function WhyNavoi() {
 
   return (
     <div className="min-h-screen flex flex-col">
-<section className="relative h-[50vh] flex items-center justify-center text-center text-white bg-[url('/assets/1258.png')] bg-cover ">
+<section className="relative h-[50vh] flex items-center justify-center text-center text-white bg-[url('/assets/image.png')]   bg-cover bg-no-repeat">
 				<div className='absolute inset-0 bg-slate-900/80' />
 				<div className='relative z-10 px-6 max-w-3xl'>
 				<motion.h1

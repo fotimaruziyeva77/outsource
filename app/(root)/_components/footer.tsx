@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 
 export default function Footer() {
-	const center = { lat: 40.1005, lng: 65.3794 } // Navoi koordinatalari
+	const center = { lat: 40.1005, lng: 65.3794 } 
 
 	return (
 		<footer className='bg-gray-900 text-white py-10'>
