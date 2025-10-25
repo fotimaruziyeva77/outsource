@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Navbar from './(root)/_components/navbar'
 import Footer from './(root)/_components/footer'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,6 +29,7 @@ export default function RootLayout({
         {/* Asosiy kontent */}
         <main className="min-h-screen">{children}</main>
 <Footer/>
+  <SpeedInsights />
         {/* Footer (ixtiyoriy) */}
         {/* <footer className="bg-[#111] text-gray-400 text-center py-4 text-sm">
           © {new Date().getFullYear()} Xorazm Xalqaro Investitsiya Forumi

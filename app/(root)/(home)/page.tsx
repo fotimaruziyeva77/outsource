@@ -133,7 +133,7 @@ const news: NewsItem[] = [
 	return (
 		<>
 			{/* === HERO SECTION === */}
-			<section className='relative min-h-screen bg-cover bg-no-repeat flex items-center justify-center text-center font-poppins px-4 sm:px-6 lg:px-8'>
+			<section className='relative h-[91vh] bg-cover bg-no-repeat flex items-center justify-center text-center font-poppins px-4 sm:px-6 lg:px-8'>
 				<div
 					className='absolute inset-0 bg-cover bg-center bg-no-repeat'
 					style={{
@@ -161,7 +161,7 @@ const news: NewsItem[] = [
 						The Republic of Uzbekistan Navoi Region
 					</motion.h5>
 
-					<div className='grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-20 md:mt-40 max-w-6xl mx-auto'>
+					<div className='grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-20 md:mt-40 max-w-7xl mx-auto'>
 						{/* BENEFITS */}
 						<div className='bg-black/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-white'>
 							<h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#C9AD9D]'>
