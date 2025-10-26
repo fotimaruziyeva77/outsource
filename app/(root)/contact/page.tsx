@@ -11,6 +11,8 @@ import {
   FaComment,
 } from "react-icons/fa";
 import Image from "next/image";
+import axios from "axios";
+import { API_SERVICE } from "@/lib/api-request";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,19 +24,50 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
+  // 🔹 Input o‘zgarishlarini ushlash
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // 🔹 Formani jo‘natish
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 3000);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await axios.post(`${API_SERVICE.contact}`, {
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        phone_number: formData.phone,
+        company_name: formData.company,
+        text: formData.message,
+      });
+
+      console.log("✅ Server javobi:", res.data);
+      setSuccess(true);
+      setFormData({
+        first_name: "",
+        last_name: "",
+        company: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (err: any) {
+      console.error(err);
+      setError("Xatolik yuz berdi. Qayta urinib ko‘ring.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const faqs = [
@@ -45,14 +78,9 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-   
+      {/* Banner */}
       <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden">
-        <Image
-          src="/assets/contact.png" 
-          alt="Contact Banner"
-          fill
-          className="object-cover"
-        />
+        <Image src="/assets/contact.png" alt="Contact Banner" fill className="object-cover" />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -65,9 +93,9 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* 📬 Contact Form and FAQ Section */}
+      {/* 📬 Contact form + FAQ */}
       <div className="flex flex-col lg:flex-row gap-8 p-6 md:p-12">
-        {/* Chap: Kontakt form */}
+        {/* Chap tomondagi forma */}
         <aside className="bg-white shadow-lg rounded-2xl p-6 w-full lg:w-1/2 lg:sticky lg:top-7">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -139,15 +167,21 @@ export default function ContactPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="flex items-center gap-2 bg-green-700 text-white px-8 py-3 rounded-xl shadow-md font-semibold hover:bg-green-800 transition"
+                disabled={loading}
+                className="flex items-center gap-2 bg-green-700 text-white px-8 py-3 rounded-xl shadow-md font-semibold hover:bg-green-800 transition disabled:opacity-60"
               >
-                <FaPaperPlane /> Submit
+                <FaPaperPlane /> {loading ? "Sending..." : "Submit"}
               </motion.button>
             </div>
 
             {success && (
               <div className="bg-green-100 text-green-800 font-semibold rounded-xl p-3 text-center mt-4">
                 Message sent successfully ✅
+              </div>
+            )}
+            {error && (
+              <div className="bg-red-100 text-red-700 font-semibold rounded-xl p-3 text-center mt-4">
+                {error}
               </div>
             )}
           </form>
@@ -168,6 +202,7 @@ export default function ContactPage() {
   );
 }
 
+/* 🔸 Input field component */
 function Field({
   label,
   name,
@@ -182,7 +217,7 @@ function Field({
   placeholder: string;
   icon: React.ReactNode;
   type?: string;
-   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
 }) {
   return (
@@ -207,6 +242,7 @@ function Field({
   );
 }
 
+/* 🔸 FAQ item */
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 

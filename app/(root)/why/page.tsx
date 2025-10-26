@@ -153,34 +153,7 @@ export default function WhyNavoi() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#062241] text-white py-12 px-6 mt-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-          <div>
-            <Image src="/assets/media/logo-navoi.png" alt="Logo" width={100} height={80} />
-            <h4 className="font-bold mt-3">NAVOI REGIONAL GOVERNMENT</h4>
-            <p className="text-sm text-gray-300 mt-2">
-              Lorem ipsum dolor sit amet consectetur. Ut elementum vitae bibendum mi arcu consectetur viverra accumsan felis
-              pharetra.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Quick Links</h4>
-            <ul className="space-y-1 text-gray-300">
-              <li><Link href="/why">Why Navoi?</Link></li>
-              <li><Link href="/explore">Explore opportunities</Link></li>
-              <li><Link href="/bpo">BPO</Link></li>
-              <li><Link href="/it-visa">IT Visa</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Sign-Up For Updates</h4>
-            <p className="text-sm text-gray-300">
-              Etiam quis nunc et nulla nulla velit donec. Ac varius sollicitudin eget morbi varius nibh nunc dui ultrices.
-            </p>
-          </div>
-        </div>
-      </footer>
+  
     </div>
   )
 }
