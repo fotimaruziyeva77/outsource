@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { motion } from 'framer-motion'
-import { CheckCircle, CircleCheck } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 
 const taxes = [
 	{ value: '0%', label: 'Corporate taxes' },
