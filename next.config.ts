@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
 				protocol: 'https',
 				hostname: 'picsum.photos',
 			},
+			 {
+        protocol: 'http',
+        hostname: 'outsource.sifatdev.uz',
+        port: '', 
+        pathname: '/media/**',
+      },
 		],
 	},
 }

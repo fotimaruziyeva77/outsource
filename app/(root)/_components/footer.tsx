@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 
 export default function Footer() {
-	const center = { lat: 40.1005, lng: 65.3794 } 
+	const center = { lat: 40.1005, lng: 65.3794 }
 
 	return (
 		<footer className='bg-gray-900 text-white py-10'>
@@ -56,22 +56,22 @@ export default function Footer() {
 							>
 								IT Visa
 							</Link>
-							<li>
-								<Link
-									href='/why'
-									className='text-gray-400 hover:text-lime-400 transition-all'
-								>
-									News
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/why'
-									className='text-gray-400 hover:text-lime-400 transition-all'
-								>
-									Contact
-								</Link>
-							</li>
+						</li>
+						<li>
+							<Link
+								href='/why'
+								className='text-gray-400 hover:text-lime-400 transition-all'
+							>
+								News
+							</Link>
+						</li>
+						<li>
+							<Link
+								href='/contact'
+								className='text-gray-400 hover:text-lime-400 transition-all'
+							>
+								Contact
+							</Link>
 						</li>
 					</ul>
 				</div>

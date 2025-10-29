@@ -9,8 +9,53 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Feedback, NewsItem, Success } from '@/app/interfaces'
+import { API_SERVICE } from '@/lib/api-request'
 
 export default function Home() {
+	const [success, setSuccess] = useState<Success[]>([])
+	const [feedback, setFeedback] = useState<Feedback[]>([])
+	const [blogs, setBlogs] = useState<NewsItem[]>([])
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(API_SERVICE.successnumber)
+				setSuccess(res.data)
+			} catch (err) {
+				console.error('Xatolik yuz berdi:', err)
+			}
+		}
+		fetchData()
+	}, [])
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(API_SERVICE.feedback)
+				setFeedback(res.data)
+			} catch (err) {
+				console.error('Xatolik yuz berdi:', err)
+			}
+		}
+		fetchData()
+	}, [])
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(API_SERVICE.blog)
+				setBlogs(res.data.results)
+			} catch (err) {
+				console.error('Xatolik yuz berdi:', err)
+			}
+		}
+		fetchData()
+	}, [])
+	if (!blogs || blogs.length === 0) {
+		return <p>Loading...</p>
+	}
+
 	const cards = [
 		{
 			img: '/assets/0ffdb1d86a08092045254fce7eca847c9c677ca4.jpg',
@@ -43,92 +88,51 @@ export default function Home() {
 			desc: 'Access to young, multilingual tech talent',
 		},
 	]
-  interface NewsItem {
-  id: number
-  title: string
-  description: string
-  date: string
-  image: string
-}
 
-const news: NewsItem[] = [
-  {
-    id: 1,
-    title: "Ecology news title",
-    description: "Lorem lorem lorem",
-    date: "08.10.2023 15:00",
-    image: "https://picsum.photos/800/500?random=1",
-  },
-  {
-    id: 2,
-    title: "Study news title",
-    description: "Lorem lorem lorem",
-    date: "08.10.2023 15:00",
-    image: "https://picsum.photos/400/250?random=2",
-  },
-  {
-    id: 3,
-    title: "Ecology news title",
-    description: "Lorem lorem lorem",
-    date: "08.10.2023 15:00",
-    image: "https://picsum.photos/400/250?random=3",
-  },
-  {
-    id: 4,
-    title: "Gold news title",
-    description: "Lorem lorem lorem",
-    date: "08.10.2023 15:00",
-    image: "https://picsum.photos/400/250?random=4",
-  },
-  {
-    id: 5,
-    title: "History news title",
-    description: "Lorem lorem lorem",
-    date: "08.10.2023 15:00",
-    image: "https://picsum.photos/400/250?random=5",
-  },
-]
+	// const news: NewsItem[] = [
+	// 	{
+	// 		id: 1,
+	// 		title: 'Ecology news title',
+	// 		description: 'Lorem lorem lorem',
+	// 		date: '08.10.2023 15:00',
+	// 		image: 'https://picsum.photos/800/500?random=1',
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		title: 'Study news title',
+	// 		description: 'Lorem lorem lorem',
+	// 		date: '08.10.2023 15:00',
+	// 		image: 'https://picsum.photos/400/250?random=2',
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		title: 'Ecology news title',
+	// 		description: 'Lorem lorem lorem',
+	// 		date: '08.10.2023 15:00',
+	// 		image: 'https://picsum.photos/400/250?random=3',
+	// 	},
+	// 	{
+	// 		id: 4,
+	// 		title: 'Gold news title',
+	// 		description: 'Lorem lorem lorem',
+	// 		date: '08.10.2023 15:00',
+	// 		image: 'https://picsum.photos/400/250?random=4',
+	// 	},
+	// 	{
+	// 		id: 5,
+	// 		title: 'History news title',
+	// 		description: 'Lorem lorem lorem',
+	// 		date: '08.10.2023 15:00',
+	// 		image: 'https://picsum.photos/400/250?random=5',
+	// 	},
+	// ]
 
-	const testimonials = [
-		{
-			id: 1,
-			name: 'George Weign',
-			location: 'Canberra, Australia',
-			company: 'Murad Buildings',
-			text: 'The long-term vision defines the development outcomes for Qatar and provides a clear structure of development and implementation strategies.',
-			img: 'https://i.pravatar.cc/100?img=1',
-		},
-		{
-			id: 2,
-			name: 'John Smit',
-			location: 'New York, USA',
-			company: 'Akfa group',
-			text: 'The long-term vision defines the development outcomes for Qatar and provides a clear structure of development and implementation strategies.',
-			img: 'https://i.pravatar.cc/100?img=2',
-		},
-		{
-			id: 3,
-			name: 'Adam Colin',
-			location: 'Washington, USA',
-			company: 'Uzum',
-			text: 'The long-term vision defines the development outcomes for Qatar and provides a clear structure of development and implementation strategies.',
-			img: 'https://i.pravatar.cc/100?img=3',
-		},
-		{
-			id: 4,
-			name: 'Samir Ozcan',
-			location: 'Antalya, Turkey',
-			company: 'Murad Buildings',
-			text: 'The long-term vision defines the development outcomes for Qatar and provides a clear structure of development and implementation strategies.',
-			img: 'https://i.pravatar.cc/100?img=4',
-		},
-	]
-	const stats = [
-		{ label: 'RESIDENT COMPANIES', value: '50+' },
-		{ label: 'EXPORT REVENUE', value: '4M+' },
-		{ label: 'EXPORT DESTINATIONS', value: '20+' },
-		{ label: 'SKILLED SPECIALISTS', value: '290+' },
-	]
+	// const stats = [
+	// 	{ label: 'RESIDENT COMPANIES', value: '50+' },
+	// 	{ label: 'EXPORT REVENUE', value: '4M+' },
+	// 	{ label: 'EXPORT DESTINATIONS', value: '20+' },
+	// 	{ label: 'SKILLED SPECIALISTS', value: '290+' },
+	// ]
 
 	return (
 		<>
@@ -328,31 +332,34 @@ const news: NewsItem[] = [
 					<h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-gray-900 text-center'>
 						Success in Numbers
 					</h2>
-
 					<div className='grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4 bg-gray-50 rounded-xl p-4 sm:p-6 md:p-8'>
-						{stats.map((item, i) => (
-							<motion.div
-								key={i}
-								initial={{ opacity: 0, scale: 0.9 }}
-								whileInView={{ opacity: 1, scale: 1 }}
-								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className='bg-white border border-gray-200 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'
-							>
-								<p className='text-gray-500 text-xs sm:text-sm font-semibold tracking-wide mb-2'>
-									{item.label}
-								</p>
-								<h3 className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800'>
-									{item.value}
-								</h3>
-							</motion.div>
-						))}
+						{success.length > 0 &&
+							Object.values(success[0])
+								.slice(1)
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								.map((item: any, i: number) => (
+									<motion.div
+										key={i}
+										initial={{ opacity: 0, scale: 0.9 }}
+										whileInView={{ opacity: 1, scale: 1 }}
+										transition={{ duration: 0.5, delay: i * 0.1 }}
+										className='bg-white border border-gray-200 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'
+									>
+										<p className='text-gray-500 text-xs sm:text-sm font-semibold tracking-wide mb-2'>
+											{item.label}
+										</p>
+										<h3 className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800'>
+											{item.value}+
+										</h3>
+									</motion.div>
+								))}
 					</div>
 				</div>
 			</section>
 			<section className='relative w-full max-w-[1340px] mx-auto py-10'>
-        <div>
-          <h1 className='text-3xl md:text-4xl left-24 bottom-5'>Feedback</h1>
-        </div>
+				<div>
+					<h1 className='text-3xl md:text-4xl left-24 bottom-5'>Feedback</h1>
+				</div>
 				{/* === CHAP & O‘NG ICONLAR === */}
 				<button className='swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
 					<ChevronLeft className='w-5 h-5' />
@@ -377,99 +384,122 @@ const news: NewsItem[] = [
 					}}
 					className='pb-10'
 				>
-					{testimonials.map(item => (
+					{feedback.map(item => (
 						<SwiperSlide
 							key={item.id}
 							className='bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg'
 						>
 							<div className='flex justify-between mb-3'>
-								<div className='text-[#ffb400] text-lg'>★★★★★</div>
+								<div className='text-[#ffb400] text-lg'>
+									{'★'.repeat(item.rating) + '☆'.repeat(5 - item.rating)}
+								</div>
 								<div className='text-3xl text-[#44b74a] leading-none'>❝</div>
 							</div>
 
-							<p className='text-sm text-gray-600 mb-5'>{item.text}</p>
+							<p className='text-sm text-gray-600 mb-5'>{item.description}</p>
 
 							<div className='flex items-center gap-3'>
 								<Image
-									src={item.img}
-									alt={item.name}
+									src={item.profile_photo}
+									alt={'company'}
 									width={45}
 									height={45}
 									className='rounded-full object-cover'
 								/>
 								<div className='text-sm'>
 									<strong className='block text-gray-900 text-base'>
-										{item.name}
+										{item.full_name}
 									</strong>
-									<span className='text-gray-500'>{item.location}</span>
+									<span className='text-gray-500'>{item.address}</span>
 								</div>
 							</div>
 
 							<div className='mt-3 text-right text-[#44b74a] text-sm font-medium'>
-								{item.company}
+								{item.company_name}
 							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
 			</section>
-      <section className="w-full py-12">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-serif text-gray-800">News</h2>
-          <Link
-            href="#"
-            className="text-sm flex items-center gap-1 text-gray-600 hover:text-gray-900"
-          >
-            See all <ArrowRight size={16} />
-          </Link>
-        </div>
+			<section className='w-full py-12'>
+				<div className='container mx-auto px-4'>
+					<div className='flex items-center justify-between mb-6'>
+						<h2 className='text-3xl font-serif text-gray-800'>News</h2>
+						<Link
+							href={'/news'}
+							className='text-sm flex items-center gap-1 text-gray-600 hover:text-gray-900'
+						>
+							See all <ArrowRight size={16} />
+						</Link>
+					</div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {/* Large image on the left */}
-          <div className="md:col-span-1 md:row-span-2 relative rounded-xl overflow-hidden group">
-            <Image
-              src={news[0].image}
-              alt={news[0].title}
-              width={800}
-              height={500}
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-            <div className="absolute bottom-4 left-4 text-white">
-              <p className="text-xs opacity-80">{news[0].date}</p>
-              <h3 className="text-lg font-semibold">{news[0].title}</h3>
-              <p className="text-sm opacity-80">{news[0].description}</p>
-            </div>
-            <ArrowRight className="absolute bottom-5 right-5 text-white" />
-          </div>
+					<div className='grid gap-4 md:grid-cols-3'>
+						{/* Birinchi katta yangilik */}
+						<Link
+							href={`/news/${blogs[0]?.slug}`}
+							className='md:col-span-1 md:row-span-2 relative rounded-xl overflow-hidden group block'
+						>
+							<Image
+								src={blogs[0]?.main_image || '/image.png'}
+								alt={blogs[0]?.title || ''}
+								width={800}
+								height={500}
+								className='object-cover w-full h-full transition-transform duration-300 group-hover:scale-105'
+							/>
+							<div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent'></div>
+							<div className='absolute bottom-4 left-4 text-white'>
+								<p className='text-xs opacity-80'>
+									{blogs[0]?.created_at &&
+										new Date(blogs[0].created_at).toLocaleDateString('uz-UZ', {
+											day: '2-digit',
+											month: '2-digit',
+											year: 'numeric',
+										})}
+								</p>
+								<h3 className='text-lg font-semibold'>{blogs[0]?.title}</h3>
+								<p className='text-sm opacity-80'>{blogs[0]?.description}</p>
+							</div>
 
-          {/* Right side news grid */}
-          <div className="grid grid-cols-2 gap-4 md:col-span-2">
-            {news.slice(1).map((item) => (
-              <div
-                key={item.id}
-                className="relative rounded-xl overflow-hidden group"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={400}
-                  height={250}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <p className="text-xs opacity-80">{item.date}</p>
-                  <h3 className="text-sm font-semibold">{item.title}</h3>
-                  <p className="text-xs opacity-80">{item.description}</p>
-                </div>
-                <ArrowRight className="absolute bottom-4 right-4 text-white" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+							<ArrowRight className='absolute bottom-5 right-5 text-white transition-transform duration-300 group-hover:translate-x-1' />
+						</Link>
+
+						{/* Qolgan 4 ta yangilik */}
+						<div className='grid grid-cols-2 gap-4 md:col-span-2'>
+							{blogs.slice(1, 5).map(item => (
+								<Link
+									key={item.id}
+									href={`/news/${item.slug}`}
+									className='relative rounded-xl overflow-hidden group block'
+								>
+									<Image
+										src={item.main_image || '/image.png'}
+										alt={item.title}
+										width={400}
+										height={250}
+										className='object-cover w-full h-full transition-transform duration-300 group-hover:scale-105'
+									/>
+									<div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent'></div>
+
+									<div className='absolute bottom-3 left-3 text-white'>
+										<p className='text-xs opacity-80'>
+											{item.created_at &&
+												new Date(item.created_at).toLocaleDateString('uz-UZ', {
+													day: '2-digit',
+													month: '2-digit',
+													year: 'numeric',
+												})}
+										</p>
+										<h3 className='text-sm font-semibold'>{item.title}</h3>
+										<p className='text-xs opacity-80'>{item.description}</p>
+									</div>
+
+									<ArrowRight className='absolute bottom-4 right-4 text-white transition-transform duration-300 group-hover:translate-x-1' />
+								</Link>
+							))}
+						</div>
+					</div>
+				</div>
+			</section>
 		</>
 	)
 }

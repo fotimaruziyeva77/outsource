@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaUser,
@@ -13,8 +13,21 @@ import {
 import Image from "next/image";
 import axios from "axios";
 import { API_SERVICE } from "@/lib/api-request";
+import { Faqs } from '@/app/interfaces'
 
 export default function ContactPage() {
+    const [faqs, setFaqs] = useState<Faqs[]>([])
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await axios.get(API_SERVICE.faqs)
+            setFaqs(res.data)
+          } catch (err) {
+            console.error('Xatolik yuz berdi:', err)
+          }
+        }
+        fetchData()
+      }, [])
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -62,7 +75,7 @@ export default function ContactPage() {
         message: "",
       });
       setTimeout(() => setSuccess(false), 3000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setError("Xatolik yuz berdi. Qayta urinib ko‘ring.");
     } finally {
@@ -70,11 +83,7 @@ export default function ContactPage() {
     }
   };
 
-  const faqs = [
-    { question: "How can I contact support?", answer: "You can reach us via email or phone anytime." },
-    { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide." },
-    { question: "Can I change my order later?", answer: "Yes, within 24 hours after placing it." },
-  ];
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -192,8 +201,8 @@ export default function ContactPage() {
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h1>
 
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+            {faqs.map((faq) => (
+              <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
             ))}
           </div>
         </section>
