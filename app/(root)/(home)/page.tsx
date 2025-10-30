@@ -137,41 +137,47 @@ export default function Home() {
 	return (
 		<>
 			{/* === HERO SECTION === */}
-			<section className='relative h-[91vh] bg-cover bg-no-repeat flex items-center justify-center text-center font-poppins px-4 sm:px-6 lg:px-8'>
+			<section className='relative min-h-[90vh] bg-cover bg-no-repeat flex items-center justify-center text-center font-poppins px-3 sm:px-6 lg:px-8'>
+				{/* Background image */}
 				<div
 					className='absolute inset-0 bg-cover bg-center bg-no-repeat'
 					style={{
 						backgroundImage: "url('/image.png')",
 					}}
 				/>
+				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/60'></div>
 
-				<div className='relative z-10 w-full max-w-7xl mx-auto'>
+				{/* Content */}
+				<div className='relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center'>
+					{/* Title */}
 					<motion.h1
 						initial={{ opacity: 0, y: -40 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 1 }}
-						className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 md:mb-6 px-4'
+						className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-3 sm:mb-5 px-2 sm:px-4 leading-snug'
 					>
 						Smart Outsourcing Starts in Uzbekistan
 					</motion.h1>
 
+					{/* Subtitle */}
 					<motion.h5
 						initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 1.2 }}
-						className='text-xl sm:text-2xl md:text-3xl text-white mb-12 md:mb-20 px-4'
+						className='text-base sm:text-xl md:text-2xl lg:text-3xl text-white font-medium mb-10 sm:mb-14 md:mb-20 px-2 sm:px-4'
 					>
 						The Republic of Uzbekistan Navoi Region
 					</motion.h5>
 
-					<div className='grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-20 md:mt-40 max-w-7xl mx-auto'>
+					{/* Cards section */}
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mt-10 sm:mt-16 md:mt-24 w-full px-2 sm:px-4'>
 						{/* BENEFITS */}
-						<div className='bg-black/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-white'>
-							<h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#C9AD9D]'>
+						<div className='bg-black/20 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-white'>
+							<h3 className='text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 text-[#C9AD9D]'>
 								BENEFITS FOR IT COMPANIES:
 							</h3>
-							<ul className='space-y-2 sm:space-y-3 text-base sm:text-lg font-semibold uppercase'>
+							<ul className='space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg font-semibold uppercase text-left'>
 								{[
 									'0% Corporate Taxes',
 									'0% Social Tax',
@@ -188,15 +194,15 @@ export default function Home() {
 							</ul>
 						</div>
 
-						{/* Spacer for desktop, hidden on mobile */}
+						{/* Middle spacer on large screens */}
 						<div className='hidden lg:block'></div>
 
 						{/* ELIGIBLE COMPANIES */}
-						<div className='bg-black/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-white'>
-							<h3 className='text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#C9AD9D]'>
+						<div className='bg-black/20 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-white'>
+							<h3 className='text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 text-[#C9AD9D]'>
 								ELIGIBLE COMPANIES:
 							</h3>
-							<ul className='space-y-2 sm:space-y-3 font-semibold uppercase text-left text-base sm:text-lg'>
+							<ul className='space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg font-semibold uppercase text-left'>
 								{[
 									'Software Development',
 									'Business Process Outsourcing',
@@ -355,16 +361,19 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<section className='relative w-full max-w-[1340px] mx-auto py-10'>
-				<div>
-					<h1 className='text-3xl md:text-4xl left-24 bottom-5'>Feedback</h1>
+			<section className='relative w-full max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-10'>
+				<div className='flex items-center justify-between mb-6'>
+					<h1 className='text-2xl sm:text-3xl md:text-4xl font-semibold'>
+						Feedback
+					</h1>
 				</div>
+
 				{/* === CHAP & O‘NG ICONLAR === */}
-				<button className='swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
-					<ChevronLeft className='w-5 h-5' />
+				<button className='swiper-button-prev hidden sm:flex absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 md:p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
+					<ChevronLeft className='w-4 h-4 md:w-5 md:h-5' />
 				</button>
-				<button className='swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
-					<ChevronRight className='w-5 h-5' />
+				<button className='swiper-button-next hidden sm:flex absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 md:p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
+					<ChevronRight className='w-4 h-4 md:w-5 md:h-5' />
 				</button>
 
 				{/* === SWIPER === */}
@@ -375,9 +384,10 @@ export default function Home() {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev',
 					}}
-					spaceBetween={20}
+					spaceBetween={16}
 					slidesPerView={1}
 					breakpoints={{
+						640: { slidesPerView: 1.5 },
 						768: { slidesPerView: 2 },
 						1024: { slidesPerView: 3 },
 					}}
@@ -386,42 +396,48 @@ export default function Home() {
 					{feedback.map(item => (
 						<SwiperSlide
 							key={item.id}
-							className='bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg'
+							className='bg-white rounded-xl shadow-md p-5 md:p-6 transition-all duration-300 hover:shadow-lg'
 						>
 							<div className='flex justify-between mb-3'>
-								<div className='text-[#ffb400] text-lg'>
+								<div className='text-[#ffb400] text-base md:text-lg'>
 									{'★'.repeat(item.rating) + '☆'.repeat(5 - item.rating)}
 								</div>
-								<div className='text-3xl text-[#44b74a] leading-none'>❝</div>
+								<div className='text-2xl md:text-3xl text-[#44b74a] leading-none'>
+									❝
+								</div>
 							</div>
 
-							<p className='text-sm text-gray-600 mb-5'>{item.description}</p>
+							<p className='text-sm md:text-base text-gray-600 mb-4 md:mb-5'>
+								{item.description}
+							</p>
 
 							<div className='flex items-center gap-3'>
 								<Image
 									src={item.profile_photo}
-									alt={'company'}
+									alt='company'
 									width={45}
 									height={45}
-									className='rounded-full object-cover'
+									className='rounded-full object-cover w-10 h-10 md:w-[45px] md:h-[45px]'
 								/>
-								<div className='text-sm'>
-									<strong className='block text-gray-900 text-base'>
+								<div className='text-sm md:text-base'>
+									<strong className='block text-gray-900'>
 										{item.full_name}
 									</strong>
 									<span className='text-gray-500'>{item.address}</span>
 								</div>
 							</div>
 
-							<div className='mt-3 text-right text-[#44b74a] text-sm font-medium'>
+							<div className='mt-3 text-right text-[#44b74a] text-xs md:text-sm font-medium'>
 								{item.company_name}
 							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
 			</section>
+
 			<section className='w-full py-12'>
 				<div className='container mx-auto px-4'>
+					{/* === Title & See All === */}
 					<div className='flex items-center justify-between mb-6'>
 						<h2 className='text-3xl font-serif text-gray-800'>News</h2>
 						<Link
@@ -432,67 +448,99 @@ export default function Home() {
 						</Link>
 					</div>
 
-					<div className='grid gap-4 md:grid-cols-3'>
-						{/* Birinchi katta yangilik */}
-						<Link
-							href={`/news/${blogs[0]?.slug}`}
-							className='md:col-span-1 md:row-span-2 relative rounded-xl overflow-hidden group block'
-						>
-							<Image
-								src={blogs[0]?.main_image || '/image.png'}
-								alt={blogs[0]?.title || ''}
-								width={800}
-								height={500}
-								className='object-cover w-full h-full transition-transform duration-300 group-hover:scale-105'
-							/>
-							<div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent'></div>
-							<div className='absolute bottom-4 left-4 text-white'>
-								<p className='text-xs opacity-80'>
-									{blogs[0]?.created_at &&
-										new Date(blogs[0].created_at).toLocaleDateString('uz-UZ', {
-											day: '2-digit',
-											month: '2-digit',
-											year: 'numeric',
-										})}
-								</p>
-								<h3 className='text-lg font-semibold'>{blogs[0]?.title}</h3>
-								<p className='text-sm opacity-80'>{blogs[0]?.description}</p>
-							</div>
+					{/* === News Grid === */}
+					<div className='grid gap-4 sm:gap-6 md:grid-cols-3'>
+						{/* === Birinchi katta yangilik === */}
+						{blogs[0] && (
+							<Link
+								href={`/news/${blogs[0].slug}`}
+								className='relative rounded-xl overflow-hidden group block md:col-span-1 md:row-span-2 max-w-full'
+							>
+								<Image
+									src={blogs[0].main_image || '/image.png'}
+									alt={blogs[0].title || ''}
+									width={800}
+									height={500}
+									className='object-cover w-full h-64 sm:h-80 md:h-full transition-transform duration-300 group-hover:scale-105'
+								/>
+								<div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent'></div>
 
-							<ArrowRight className='absolute bottom-5 right-5 text-white transition-transform duration-300 group-hover:translate-x-1' />
-						</Link>
+								<div className='absolute bottom-4 left-4 right-4 text-white space-y-1 sm:space-y-2'>
+									{/* Title + Sana bir qatorda */}
+									<div className='flex items-center justify-between gap-2'>
+										<h3 className='text-base sm:text-lg font-semibold leading-tight line-clamp-1 break-words'>
+											{blogs[0].title}
+										</h3>
+										<p className='text-xs opacity-70 shrink-0'>
+											{blogs[0].created_at &&
+												new Date(blogs[0].created_at).toLocaleDateString(
+													'uz-UZ',
+													{
+														day: '2-digit',
+														month: '2-digit',
+														year: 'numeric',
+													}
+												)}
+										</p>
+									</div>
 
-						{/* Qolgan 4 ta yangilik */}
-						<div className='grid grid-cols-2 gap-4 md:col-span-2'>
+									{/* Description xavfsiz ko‘rsatish (HTML bo‘lsa ham) */}
+									<div
+										className='text-xs sm:text-sm opacity-80 line-clamp-2 overflow-hidden break-words prose prose-sm max-w-none prose-p:m-0 prose-img:hidden prose-a:text-white prose-a:underline'
+										dangerouslySetInnerHTML={{
+											__html: blogs[0].description || '',
+										}}
+									/>
+								</div>
+
+							
+							</Link>
+						)}
+
+						{/* === Qolgan 4 ta yangilik === */}
+						<div className='grid grid-cols-1 sm:grid-cols-2 gap-4 md:col-span-2'>
 							{blogs.slice(1, 5).map(item => (
 								<Link
 									key={item.id}
 									href={`/news/${item.slug}`}
-									className='relative rounded-xl overflow-hidden group block'
+									className='relative rounded-xl overflow-hidden group block max-w-full'
 								>
 									<Image
 										src={item.main_image || '/image.png'}
 										alt={item.title}
 										width={400}
 										height={250}
-										className='object-cover w-full h-full transition-transform duration-300 group-hover:scale-105'
+										className='object-cover w-full h-48 sm:h-52 md:h-60 transition-transform duration-300 group-hover:scale-105'
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent'></div>
 
-									<div className='absolute bottom-3 left-3 text-white'>
-										<p className='text-xs opacity-80'>
-											{item.created_at &&
-												new Date(item.created_at).toLocaleDateString('uz-UZ', {
-													day: '2-digit',
-													month: '2-digit',
-													year: 'numeric',
-												})}
-										</p>
-										<h3 className='text-sm font-semibold'>{item.title}</h3>
-										<p className='text-xs opacity-80'>{item.description}</p>
+									<div className='absolute bottom-3 left-3 right-3 text-white space-y-1'>
+										<div className='flex items-center justify-between gap-2'>
+											<h3 className='text-sm sm:text-base font-semibold leading-tight line-clamp-1 break-words'>
+												{item.title}
+											</h3>
+											<p className='text-[11px] opacity-70 shrink-0'>
+												{item.created_at &&
+													new Date(item.created_at).toLocaleDateString(
+														'uz-UZ',
+														{
+															day: '2-digit',
+															month: '2-digit',
+															year: 'numeric',
+														}
+													)}
+											</p>
+										</div>
+
+										<div
+											className='text-xs opacity-80 line-clamp-2 overflow-hidden break-words prose prose-sm max-w-none prose-p:m-0 prose-img:hidden prose-a:text-white prose-a:underline'
+											dangerouslySetInnerHTML={{
+												__html: item.description || '',
+											}}
+										/>
 									</div>
 
-									<ArrowRight className='absolute bottom-4 right-4 text-white transition-transform duration-300 group-hover:translate-x-1' />
+								
 								</Link>
 							))}
 						</div>

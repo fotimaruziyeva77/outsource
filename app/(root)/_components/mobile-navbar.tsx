@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Phone, X } from 'lucide-react'
+import Image from 'next/image'
 
 interface MobileNavbarProps {
 	isOpen: boolean
@@ -31,7 +32,15 @@ export default function MobileNavbar({
 			<div className='relative bg-gradient-to-b from-[#0a1a3a] to-[#051024] text-white w-80 h-full overflow-y-auto'>
 				{/* Header */}
 				<div className='flex items-center justify-between p-4 border-b border-gray-700'>
-					<h2 className='text-xl font-bold'>Menu</h2>
+					<Link href='/' className='flex items-center gap-3'>
+							<Image
+								src='/logo22.png'
+								alt='Navoi Logo'
+								width={300}
+								height={250}
+								className='h-12 md:h-16 w-auto'
+							/>
+						</Link>
 					<button
 						onClick={onClose}
 						className='p-2 hover:bg-gray-700 rounded-lg transition'

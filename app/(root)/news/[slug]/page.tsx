@@ -3,7 +3,7 @@
 import { NewsItem } from '@/app/interfaces'
 import { API_SERVICE } from '@/lib/api-request'
 import axios from 'axios'
-import { Calendar, Clock, ArrowLeft, Share2 } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
@@ -35,10 +35,9 @@ export default function Page() {
 				setLoading(true)
 				const [newsRes, recentRes] = await Promise.all([
 					axios.get(`${API_SERVICE.blog}${slug}`),
-					axios.get(`${API_SERVICE.blog}?limit=5`), 
+					axios.get(`${API_SERVICE.blog}?limit=5`),
 				])
 
-				console.log(newsRes.data)
 				setNews([newsRes.data])
 				setRecentNews(recentRes.data.results || recentRes.data)
 			} catch (err) {
@@ -56,18 +55,6 @@ export default function Page() {
 		return dateString.slice(0, 10).split('-').reverse().join('.')
 	}
 
-	const handleShare = () => {
-		if (navigator.share) {
-			navigator.share({
-				title: news[0]?.title,
-				text: news[0]?.description?.replace(/<[^>]*>/g, '').substring(0, 100),
-				url: window.location.href,
-			})
-		} else {
-			navigator.clipboard.writeText(window.location.href)
-			alert('Havola nusxalandi!')
-		}
-	}
 
 	if (loading) {
 		return (
@@ -84,16 +71,17 @@ export default function Page() {
 				<div className='mb-6'>
 					<button
 						onClick={() => router.back()}
-						className='flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors'
+						className='flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors text-sm sm:text-base'
 					>
 						<ArrowLeft size={20} />
 						<span>Back</span>
 					</button>
 				</div>
 
-				<div className='flex flex-col lg:flex-row gap-8'>
-					{/* Asosiy kontent */}
-					<div className='w-[1240px] mx-auto'>
+				{/* Kontent */}
+				<div className='flex flex-col gap-8'>
+					{/* Asosiy yangilik */}
+					<div className='w-full lg:w-[90%] xl:w-[70%] mx-auto'>
 						{news.length === 0 ? (
 							<div className='text-center py-20 bg-white rounded-2xl shadow-sm'>
 								<p className='text-gray-500 text-lg font-medium'>
@@ -112,56 +100,50 @@ export default function Page() {
 									key={item.id}
 									className='bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl'
 								>
+									{/* Rasm */}
 									<div className='relative'>
 										<Image
 											src={item.content_image || '/fallback.jpg'}
 											alt={item.title || 'News Image'}
 											width={1200}
 											height={600}
-											className='w-full h-64 md:h-80 object-cover'
+											className='w-full h-56 sm:h-72 md:h-80 lg:h-[450px] object-cover'
 											priority
 										/>
 										<div className='absolute inset-0 bg-gradient-to-t from-black/30 to-transparent'></div>
 
 										{/* Sana va vaqt */}
-										<div className='absolute bottom-4 left-4 flex items-center gap-4 text-white'>
-											<div className='flex items-center gap-1 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full'>
-												<Calendar size={16} />
-												<span className='text-sm font-medium'>
-													{formatDate(item.created_at)}
-												</span>
+										<div className='absolute bottom-4 left-4 flex flex-wrap items-center gap-2 text-white'>
+											<div className='flex items-center gap-1 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full text-xs sm:text-sm'>
+												<Calendar size={14} />
+												<span>{formatDate(item.created_at)}</span>
 											</div>
 											{item.minutes_to_read && (
-												<div className='flex items-center gap-1 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full'>
-													<Clock size={16} />
-													<span className='text-sm font-medium'>
-														{item.minutes_to_read} minutes
-													</span>
+												<div className='flex items-center gap-1 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full text-xs sm:text-sm'>
+													<Clock size={14} />
+													<span>{item.minutes_to_read} min</span>
 												</div>
 											)}
 										</div>
 									</div>
 
-									<div className='p-6 md:p-8 space-y-6'>
-										{/* Sarlavha va ulashish tugmasi */}
-										<div className='flex flex-col md:flex-row md:items-start md:justify-between gap-4'>
-											<h1 className='text-2xl md:text-3xl font-bold text-gray-900 leading-tight'>
+									{/* Matn qismi */}
+									<div className='p-4 sm:p-6 md:p-8 space-y-6'>
+										{/* Sarlavha va Share tugmasi */}
+										<div className='flex flex-col sm:flex-row sm:items-center sm:justify-between md:items-start md:justify-between gap-3 sm:gap-4'>
+											{/* Sarlavha */}
+											<h1 className='text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 leading-snug sm:leading-tight'>
 												{item.title}
 											</h1>
-											<button
-												onClick={handleShare}
-												className='flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors self-start'
-											>
-												<Share2 size={18} />
-												<span>Share</span>
-											</button>
+
+									
 										</div>
 
-										{/* Tavsif */}
+										{/* Tavsif (HTML formatda) */}
 										<div className='overflow-hidden w-full'>
 											<div
-												className='prose max-w-none prose-lg prose-gray prose-headings:text-gray-800 prose-a:text-blue-600 prose-img:rounded-xl prose-blockquote:border-l-blue-500 prose-blockquote:bg-gray-50 prose-blockquote:py-1 prose-blockquote:px-4
-		prose-img:max-w-full prose-img:h-auto prose-table:max-w-full prose-table:overflow-x-auto'
+												className='prose max-w-none prose-base sm:prose-lg prose-gray prose-headings:text-gray-800 prose-a:text-blue-600 prose-img:rounded-xl prose-blockquote:border-l-blue-500 prose-blockquote:bg-gray-50 prose-blockquote:py-1 prose-blockquote:px-4
+												prose-img:max-w-full prose-img:h-auto prose-table:max-w-full prose-table:overflow-x-auto'
 												dangerouslySetInnerHTML={{ __html: item.content }}
 											/>
 										</div>

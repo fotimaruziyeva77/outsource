@@ -58,13 +58,16 @@ export default function ItVisaPage() {
 	return (
 		<main className='bg-white text-slate-800'>
 			{/* === HERO === */}
-			<section className="relative h-[50vh] flex items-center justify-center text-center text-white bg-[url('/assets/1258.png')] bg-cover ">
+			<section
+				className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] flex items-center justify-center text-center text-white 
+             bg-[url('/assets/1258.png')] bg-no-repeat bg-center bg-cover sm:bg-[length:100%_auto]"
+			>
 				<div className='absolute inset-0 bg-slate-900/80' />
-				<div className='relative z-10 px-6 max-w-3xl'>
+				<div className='relative z-10 px-4 sm:px-6 max-w-3xl'>
 					<motion.h1
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
-						className='text-4xl md:text-5xl font-bold mb-4'
+						className='text-2xl sm:text-4xl md:text-5xl font-bold mb-4 leading-snug'
 					>
 						Outsource logistics services to Uzbekistan
 					</motion.h1>
