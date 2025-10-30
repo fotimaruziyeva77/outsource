@@ -52,9 +52,9 @@ export default function Home() {
 		}
 		fetchData()
 	}, [])
-	if (!blogs || blogs.length === 0) {
-		return <p>Loading...</p>
-	}
+	// if (!blogs || blogs.length === 0) {
+	// 	return <p>Loading...</p>
+	// }
 
 	const cards = [
 		{
@@ -336,7 +336,6 @@ export default function Home() {
 						{success.length > 0 &&
 							Object.values(success[0])
 								.slice(1)
-								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								.map((item: any, i: number) => (
 									<motion.div
 										key={i}
