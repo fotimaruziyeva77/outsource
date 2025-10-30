@@ -336,7 +336,7 @@ export default function Home() {
 						{success.length > 0 &&
 							Object.values(success[0])
 								.slice(1)
-								.map((item: any, i: number) => (
+								.map((item, i: number) => (
 									<motion.div
 										key={i}
 										initial={{ opacity: 0, scale: 0.9 }}
