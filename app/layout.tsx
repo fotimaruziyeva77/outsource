@@ -13,6 +13,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Navoi Regional Government",
   description: "Official investment portal of Navoi region",
+  icons: {
+    icon: "/removebg.png", // yoki "/icon.png"
+  },
 };
 
 export default function RootLayout({
