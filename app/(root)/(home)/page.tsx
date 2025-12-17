@@ -8,14 +8,13 @@ import { ArrowRight,} from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Feedback, NewsItem, Success } from '@/app/interfaces'
+import { NewsItem, Success } from '@/app/interfaces'
 import { API_SERVICE } from '@/lib/api-request'
 import Features from './_components/Gateway '
 import FAQSection from './_components/faq'
 
 export default function Home() {
 	const [success, setSuccess] = useState<Success[]>([])
-	const [feedback, setFeedback] = useState<Feedback[]>([])
 	const [blogs, setBlogs] = useState<NewsItem[]>([])
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,17 +28,7 @@ export default function Home() {
 		fetchData()
 	}, [])
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axios.get(API_SERVICE.feedback)
-				setFeedback(res.data)
-			} catch (err) {
-				console.error('Xatolik yuz berdi:', err)
-			}
-		}
-		fetchData()
-	}, [])
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -242,7 +231,8 @@ export default function Home() {
       {success.length > 0 &&
         Object.values(success[0])
           .slice(1)
-          .map((item: any, i: number) => (
+ 
+          .map((item,i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
