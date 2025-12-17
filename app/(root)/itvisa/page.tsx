@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from 'framer-motion'
 export default function ITVisa() {
   return (
-    <main className="font-sans text-gray-900">
+    <main className="font-sans text-gray-900 min-h-screen">
       {/* === HERO SECTION === */}
     			<section className="relative h-[50vh] flex items-center justify-center text-center text-white bg-[url('/63f02ff0cf19e90057f797ce40ffcc2cbc8bded8.png')] bg-cover bg-center">
 				<div className='absolute inset-0 bg-slate-900/80' />

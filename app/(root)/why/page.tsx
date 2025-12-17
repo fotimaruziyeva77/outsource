@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import axios from 'axios'
 import { Education } from '@/app/interfaces'
 import { API_SERVICE } from '@/lib/api-request'
+import ItParkBanner from './_components/banner'
 
 export default function WhyNavoi() {
 	const [education, setEducation] = useState<Education[]>([])
@@ -92,17 +93,21 @@ export default function WhyNavoi() {
 					</motion.h1>
 				</div>
 			</section>
-
 			{/* EDUCATION */}
-			<section className='py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center'>
-				<h2 className='text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6'>
-					Education & Talent Development
-				</h2>
-				<p className='text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-10'>
-					Navoi Region is home to a fast-growing pool of skilled and
-					multilingual talent — an essential asset for international BPO
-					companies.
-				</p>
+			<section className='py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto '>
+			 <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl md:text-3xl font-serif font-semibold text-gray-900 leading-tight mb-4">
+          Your Access Point to a Young, Skilled,
+          <br className="hidden sm:block" />
+          and Multilingual Workforce
+        </h2>
+
+        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+          Navoi offers one of the youngest and most multilingual labor forces
+          in Central Asia – an ideal environment for global BPO and digital
+          service companies looking to scale quickly and cost-efficiently.
+        </p>
+      </div>
 
 		<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
       {education?.map(item => (
@@ -128,10 +133,8 @@ export default function WhyNavoi() {
       ))}
     </div>
 
-				<p className='mt-10 text-base sm:text-lg text-gray-700 max-w-3xl mx-auto'>
-					With this combination of youth, education, and language proficiency,
-					Navoi is positioned as a reliable hub for global digital services and
-					BPO.
+				<p className='mt-10 text-base sm:text-lg text-gray-700 max-w-7xl mx-auto px-4'>
+			With its young population, strong technical education system, and multilingual workforce, Navoi provides an ideal environment for companies looking to establish or scale IT and BPO operations.
 				</p>
 			</section>
 
@@ -232,6 +235,7 @@ export default function WhyNavoi() {
 						</div>
 					)}
 				</div>
+				<ItParkBanner/>
 			</section>
 		</div>
 	)

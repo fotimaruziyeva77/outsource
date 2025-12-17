@@ -59,7 +59,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								href='/why'
+								href='/news'
 								className='text-gray-400 hover:text-lime-400 transition-all'
 							>
 								News

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Briefcase, Building2, CreditCard, DollarSign, FileText, GraduationCap, Laptop, MoveDown, Phone, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import WhatSetsApart from './components/dialog'
 export default function ExploreOpportunities() {
 	const services = [
 	{
@@ -103,11 +104,11 @@ export default function ExploreOpportunities() {
 				</div>
 			</section>
 			{/* STEPS */}
-			<div className='max-w-6xl mx-auto px-6 mt-10'>
+			<div className='max-w-7xl mx-auto px-6 mt-10'>
 				<h2 className='text-3xl font-bold uppercase mb-6'>
 					How to become a member of IT Park?
 				</h2>
-				<div className='flex flex-wrap gap-6 justify-center'>
+				<div className='flex flex-wrap gap-20 justify-center'>
 					{[
 						{
 							step: 'STEP 1',
@@ -230,7 +231,7 @@ export default function ExploreOpportunities() {
 			</div>
 
 			{/* VIRTUAL OFFICE */}
-			<section className='max-w-6xl mx-auto px-6 mt-12 flex flex-col md:flex-row items-center gap-8'>
+			<section className='max-w-7xl mx-auto px-6 mt-12 flex flex-col md:flex-row items-center gap-8'>
 				<div className='flex-1'>
 					<h3 className='text-3xl font-semibold mb-3'>
 						Virtual Office Services
@@ -252,9 +253,12 @@ export default function ExploreOpportunities() {
 					/>
 				</div>
 			</section>
+			<section>
+				<WhatSetsApart/>
+			</section>
 
 			{/* ZERO RISK CARDS */}
-			<div className='max-w-6xl mx-auto px-6 mt-12'>
+			<div className='max-w-7xl mx-auto px-6 mt-12'>
 				<h3 className='text-3xl font-bold mb-6'>
 					ZERO RISK (0 RISK; 1 YEAR; 50 PEOPLE)
 				</h3>

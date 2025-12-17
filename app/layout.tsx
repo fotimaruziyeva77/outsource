@@ -33,10 +33,6 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
 <Footer/>
   <SpeedInsights />
-        {/* Footer (ixtiyoriy) */}
-        {/* <footer className="bg-[#111] text-gray-400 text-center py-4 text-sm">
-          © {new Date().getFullYear()} Xorazm Xalqaro Investitsiya Forumi
-        </footer> */}
       </body>
     </html>
   );

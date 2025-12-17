@@ -2,17 +2,16 @@
 import { Card } from '@/components/ui/card'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight,} from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Feedback, NewsItem, Success } from '@/app/interfaces'
 import { API_SERVICE } from '@/lib/api-request'
+import Features from './_components/Gateway '
+import FAQSection from './_components/faq'
 
 export default function Home() {
 	const [success, setSuccess] = useState<Success[]>([])
@@ -56,96 +55,24 @@ export default function Home() {
 	// 	return <p>Loading...</p>
 	// }
 
-	const cards = [
-		{
-			img: '/assets/0ffdb1d86a08092045254fce7eca847c9c677ca4.jpg',
-			title: 'Modern Office Spaces',
-			desc: 'Ready-to-use facilities with high-speed internet',
-		},
-		{
-			img: '/assets/0ffdb1d86a08092045254fce7eca847c9c677ca4.jpg',
-			title: 'Modern Office Spaces',
-			desc: 'Ready-to-use facilities with high-speed internet',
-		},
-		{
-			img: '/assets/0ffdb1d86a08092045254fce7eca847c9c677ca4.jpg',
-			title: 'Modern Office Spaces',
-			desc: 'Ready-to-use facilities with high-speed internet',
-		},
-		{
-			img: '/assets/24342ba5759996fbaa9e5b8be5cd9cb074317700.jpg',
-			title: 'Tax Benefits',
-			desc: '0% corporate tax, VAT, and social payments',
-		},
-		{
-			img: '/assets/b271e3afb04f84a99d8588b94a3a2bbe37a6e382.jpg',
-			title: 'Full Government Support',
-			desc: 'Legal, visa, and administrative assistance',
-		},
-		{
-			img: '/assets/cc9a8aa1ffde13fb2a78b7141e193422f14808e0.jpg',
-			title: 'Skilled Workforce',
-			desc: 'Access to young, multilingual tech talent',
-		},
-	]
-
-	// const news: NewsItem[] = [
-	// 	{
-	// 		id: 1,
-	// 		title: 'Ecology news title',
-	// 		description: 'Lorem lorem lorem',
-	// 		date: '08.10.2023 15:00',
-	// 		image: 'https://picsum.photos/800/500?random=1',
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		title: 'Study news title',
-	// 		description: 'Lorem lorem lorem',
-	// 		date: '08.10.2023 15:00',
-	// 		image: 'https://picsum.photos/400/250?random=2',
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		title: 'Ecology news title',
-	// 		description: 'Lorem lorem lorem',
-	// 		date: '08.10.2023 15:00',
-	// 		image: 'https://picsum.photos/400/250?random=3',
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		title: 'Gold news title',
-	// 		description: 'Lorem lorem lorem',
-	// 		date: '08.10.2023 15:00',
-	// 		image: 'https://picsum.photos/400/250?random=4',
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		title: 'History news title',
-	// 		description: 'Lorem lorem lorem',
-	// 		date: '08.10.2023 15:00',
-	// 		image: 'https://picsum.photos/400/250?random=5',
-	// 	},
-	// ]
-
-	// const stats = [
-	// 	{ label: 'RESIDENT COMPANIES', value: '50+' },
-	// 	{ label: 'EXPORT REVENUE', value: '4M+' },
-	// 	{ label: 'EXPORT DESTINATIONS', value: '20+' },
-	// 	{ label: 'SKILLED SPECIALISTS', value: '290+' },
-	// ]
+	
+	const formatNumber = (num: number) => {
+  if (num >= 1_000_000) return `${num / 1_000_000}M+`
+  if (num >= 1_000) return `${num / 1_000}K+`
+  return `${num}+`
+}
 
 	return (
-		<>
-			{/* === HERO SECTION === */}
+		<div className='min-h-screen'>
+		
 			<section className='relative min-h-[90vh] bg-cover bg-no-repeat flex items-center justify-center text-center font-poppins px-3 sm:px-6 lg:px-8'>
-				{/* Background image */}
 				<div
 					className='absolute inset-0 bg-cover bg-center bg-no-repeat'
 					style={{
 						backgroundImage: "url('/image.png')",
 					}}
 				/>
-				{/* Overlay */}
+				
 				<div className='absolute inset-0 bg-black/60'></div>
 
 				{/* Content */}
@@ -298,145 +225,49 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-
+<Features/>
 					{/* GRID */}
-					<div className='grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3'>
-						{cards.map((benefit, i) => (
-							<motion.div
-								key={i}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className='relative overflow-hidden rounded-xl shadow-md group h-[280px] sm:h-[320px]'
-							>
-								<Image
-									src={benefit.img}
-									alt={benefit.title}
-									width={600}
-									height={400}
-									className='object-cover w-full h-full transition-transform duration-500 group-hover:scale-105'
-								/>
-
-								{/* CARD INFO */}
-								<div className='absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/90 backdrop-blur-md rounded-xl p-3 sm:p-4 shadow-md'>
-									<h3 className='font-semibold text-gray-900 text-base sm:text-lg'>
-										{benefit.title}
-									</h3>
-									<p className='text-xs sm:text-sm text-gray-600 mt-1'>
-										{benefit.desc}
-									</p>
-								</div>
-							</motion.div>
-						))}
-					</div>
+				
 				</div>
 			</section>
 
 			{/* === STATS SECTION === */}
-			<section className='py-12 md:py-16 px-4 sm:px-6 lg:px-8'>
-				<div className='max-w-7xl mx-auto'>
-					<h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-gray-900 text-center'>
-						Success in Numbers
-					</h2>
-					<div className='grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4 bg-gray-50 rounded-xl p-4 sm:p-6 md:p-8'>
-						{success.length > 0 &&
-							Object.values(success[0])
-								.slice(1)
-								.map((item, i: number) => (
-									<motion.div
-										key={i}
-										initial={{ opacity: 0, scale: 0.9 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										transition={{ duration: 0.5, delay: i * 0.1 }}
-										className='bg-white border border-gray-200 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'
-									>
-										<p className='text-gray-500 text-xs sm:text-sm font-semibold tracking-wide mb-2'>
-											{item.label}
-										</p>
-										<h3 className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800'>
-											{item.value}+
-										</h3>
-									</motion.div>
-								))}
-					</div>
-				</div>
-			</section>
-			<section className='relative w-full max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-10'>
-				<div className='flex items-center justify-between mb-6'>
-					<h1 className='text-2xl sm:text-3xl md:text-4xl font-semibold'>
-						Feedback
-					</h1>
-				</div>
+		<section className='py-10 md:py-4 px-4 sm:px-6 lg:px-8'>
+  <div className='max-w-7xl mx-auto'>
+    <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-gray-900 text-center'>
+      Success in Numbers
+    </h2>
 
-				{/* === CHAP & O‘NG ICONLAR === */}
-				<button className='swiper-button-prev hidden sm:flex absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 md:p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
-					<ChevronLeft className='w-4 h-4 md:w-5 md:h-5' />
-				</button>
-				<button className='swiper-button-next hidden sm:flex absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 md:p-3 rounded-full hover:bg-[#44b74a] hover:text-white transition'>
-					<ChevronRight className='w-4 h-4 md:w-5 md:h-5' />
-				</button>
+    <div className='grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4 bg-gray-50 rounded-xl p-4 sm:p-6 md:p-8'>
+      {success.length > 0 &&
+        Object.values(success[0])
+          .slice(1)
+          .map((item: any, i: number) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className='bg-white border border-gray-200 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'
+            >
+              <p className='text-gray-500 text-xs sm:text-sm font-semibold tracking-wide mb-2'>
+                {item.label}
+              </p>
 
-				{/* === SWIPER === */}
-				<Swiper
-					modules={[Pagination, Navigation]}
-					pagination={{ clickable: true }}
-					navigation={{
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					}}
-					spaceBetween={16}
-					slidesPerView={1}
-					breakpoints={{
-						640: { slidesPerView: 1.5 },
-						768: { slidesPerView: 2 },
-						1024: { slidesPerView: 3 },
-					}}
-					className='pb-10'
-				>
-					{feedback.map(item => (
-						<SwiperSlide
-							key={item.id}
-							className='bg-white rounded-xl shadow-md p-5 md:p-6 transition-all duration-300 hover:shadow-lg'
-						>
-							<div className='flex justify-between mb-3'>
-								<div className='text-[#ffb400] text-base md:text-lg'>
-									{'★'.repeat(item.rating) + '☆'.repeat(5 - item.rating)}
-								</div>
-								<div className='text-2xl md:text-3xl text-[#44b74a] leading-none'>
-									❝
-								</div>
-							</div>
+              <h3 className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800'>
+                {formatNumber(item.value)}
+              </h3>
+            </motion.div>
+          ))}
+    </div>
+  </div>
+</section>
 
-							<p className='text-sm md:text-base text-gray-600 mb-4 md:mb-5'>
-								{item.description}
-							</p>
-
-							<div className='flex items-center gap-3'>
-								<Image
-									src={item.profile_photo}
-									alt='company'
-									width={45}
-									height={45}
-									className='rounded-full object-cover w-10 h-10 md:w-[45px] md:h-[45px]'
-								/>
-								<div className='text-sm md:text-base'>
-									<strong className='block text-gray-900'>
-										{item.full_name}
-									</strong>
-									<span className='text-gray-500'>{item.address}</span>
-								</div>
-							</div>
-
-							<div className='mt-3 text-right text-[#44b74a] text-xs md:text-sm font-medium'>
-								{item.company_name}
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
-			</section>
+	
 
 			<section className='w-full py-12'>
-				<div className='container mx-auto px-4'>
+				<div className='max-w-7xl mx-auto px-4'>
 					{/* === Title & See All === */}
 					<div className='flex items-center justify-between mb-6'>
 						<h2 className='text-3xl font-serif text-gray-800'>News</h2>
@@ -545,8 +376,9 @@ export default function Home() {
 							))}
 						</div>
 					</div>
+					<FAQSection/>
 				</div>
 			</section>
-		</>
+		</div>
 	)
 }

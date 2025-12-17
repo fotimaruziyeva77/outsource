@@ -56,7 +56,7 @@ const steps = [
 
 export default function ItVisaPage() {
 	return (
-		<main className='bg-white text-slate-800'>
+		<main className='bg-white text-slate-800 min-h-screen'>
 			{/* === HERO === */}
 			<section
 				className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] flex items-center justify-center text-center text-white 
