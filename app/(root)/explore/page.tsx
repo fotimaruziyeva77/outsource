@@ -1,88 +1,107 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Briefcase, Building2, CreditCard, DollarSign, FileText, GraduationCap, Laptop, MoveDown, Phone, Users } from 'lucide-react'
+import {
+	Briefcase,
+	Building2,
+	CreditCard,
+	DollarSign,
+	FileText,
+	GraduationCap,
+	Laptop,
+	MoveDown,
+	Phone,
+	Users,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import WhatSetsApart from './components/dialog'
+import Carousel from './components/carousel'
+
+
 export default function ExploreOpportunities() {
 	const services = [
-	{
-		id: 1,
-		title: 'QUALIFIED LEGAL ADVICE:',
-		description:
-			'Our experts will assist you in explaining all legal aspects of starting a business in Uzbekistan and answer all your questions.',
-		icon: <Briefcase className='w-8 h-8 text-green-600' />,
-		image: '/assets/legal.jpg',
-	},
-	{
-		id: 2,
-		title: 'COMPANY REGISTRATION:',
-		description:
-			'We will help you with the preparation of all necessary documents to register your company in accordance with the legislation of Uzbekistan.',
-		icon: <FileText className='w-8 h-8 text-green-600' />,
-		image: '/assets/registration.jpg',
-	},
-	{
-		id: 3,
-		title: 'PREPARATION OF PRIMARY DOCUMENTATION:',
-		description:
-			'Our specialists will prepare all the necessary documents to start your activity, including the charter, constituent documents, etc.',
-		icon: <Building2 className='w-8 h-8 text-green-600' />,
-		image: '/assets/document.jpg',
-	},
-	{
-		id: 4,
-		title: 'OPENING A BANK ACCOUNT:',
-		description:
-			'We will help you open a bank account in one of the best banks in Uzbekistan so that you can conduct financial transactions without any problems.',
-		icon: <CreditCard className='w-8 h-8 text-green-600' />,
-		image: '/assets/bank.jpg',
-	},
-]
+		{
+			id: 1,
+			title: 'QUALIFIED LEGAL ADVICE:',
+			description:
+				'Our experts will assist you in explaining all legal aspects of starting a business in Uzbekistan and answer all your questions.',
+			icon: <Briefcase className='w-8 h-8 text-green-600' />,
+			image: '/assets/legal.jpg',
+		},
+		{
+			id: 2,
+			title: 'COMPANY REGISTRATION:',
+			description:
+				'We will help you with the preparation of all necessary documents to register your company in accordance with the legislation of Uzbekistan.',
+			icon: <FileText className='w-8 h-8 text-green-600' />,
+			image: '/assets/registration.jpg',
+		},
+		{
+			id: 3,
+			title: 'PREPARATION OF PRIMARY DOCUMENTATION:',
+			description:
+				'Our specialists will prepare all the necessary documents to start your activity, including the charter, constituent documents, etc.',
+			icon: <Building2 className='w-8 h-8 text-green-600' />,
+			image: '/assets/document.jpg',
+		},
+		{
+			id: 4,
+			title: 'OPENING A BANK ACCOUNT:',
+			description:
+				'We will help you open a bank account in one of the best banks in Uzbekistan so that you can conduct financial transactions without any problems.',
+			icon: <CreditCard className='w-8 h-8 text-green-600' />,
+			image: '/assets/bank.jpg',
+		},
+	]
 
 	const benefits = [
-    {
-      icon: <Building2 className="w-8 h-8 text-green-500" />,
-      title: (
-        <>
-          Free Office for <span className="text-green-400 font-semibold">1 Year</span>
-        </>
-      ),
-    },
-    {
-      icon: <Laptop className="w-8 h-8 text-green-500" />,
-      title: (
-        <>
-          Technical <span className="text-green-400 font-semibold">Equipment</span>
-        </>
-      ),
-    },
-    {
-      icon: <DollarSign className="w-8 h-8 text-green-500" />,
-      title: (
-        <>
-          Reimbursement of <br />
-          Up to <span className="text-green-400 font-semibold">15% of Salary</span>
-        </>
-      ),
-    },
-    {
-      icon: <Users className="w-8 h-8 text-green-500" />,
-      title: (
-        <>
-          Partial Coverage of <span className="text-green-400 font-semibold">HR Services</span>
-        </>
-      ),
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8 text-green-500" />,
-      title: (
-        <>
-          Up to <span className="text-green-400 font-semibold">$5000</span> for Employee Training
-        </>
-      ),
-    },
-  ];
+		{
+			icon: <Building2 className='w-8 h-8 text-green-500' />,
+			title: (
+				<>
+					Free Office for{' '}
+					<span className='text-green-400 font-semibold'>1 Year</span>
+				</>
+			),
+		},
+		{
+			icon: <Laptop className='w-8 h-8 text-green-500' />,
+			title: (
+				<>
+					Technical{' '}
+					<span className='text-green-400 font-semibold'>Equipment</span>
+				</>
+			),
+		},
+		{
+			icon: <DollarSign className='w-8 h-8 text-green-500' />,
+			title: (
+				<>
+					Reimbursement of <br />
+					Up to{' '}
+					<span className='text-green-400 font-semibold'>15% of Salary</span>
+				</>
+			),
+		},
+		{
+			icon: <Users className='w-8 h-8 text-green-500' />,
+			title: (
+				<>
+					Partial Coverage of{' '}
+					<span className='text-green-400 font-semibold'>HR Services</span>
+				</>
+			),
+		},
+		{
+			icon: <GraduationCap className='w-8 h-8 text-green-500' />,
+			title: (
+				<>
+					Up to <span className='text-green-400 font-semibold'>$5000</span> for
+					Employee Training
+				</>
+			),
+		},
+	]
 
 	return (
 		<div className='min-h-screen text-gray-800'>
@@ -229,11 +248,11 @@ export default function ExploreOpportunities() {
 					</button>
 				</Link>
 			</div>
-
+			
 			{/* VIRTUAL OFFICE */}
 			<section className='max-w-7xl mx-auto px-6 mt-12 flex flex-col md:flex-row items-center gap-8'>
 				<div className='flex-1'>
-					<h3 className='text-3xl font-semibold mb-3'>
+					<h3 className='text-3xl font-semibold mb-3 uppercase'>
 						Virtual Office Services
 					</h3>
 					<p className='text-gray-600'>
@@ -253,8 +272,11 @@ export default function ExploreOpportunities() {
 					/>
 				</div>
 			</section>
+				<div className='mt-20'>
+				<Carousel/>
+			</div>
 			<section>
-				<WhatSetsApart/>
+				<WhatSetsApart />
 			</section>
 
 			{/* ZERO RISK CARDS */}
@@ -262,21 +284,21 @@ export default function ExploreOpportunities() {
 				<h3 className='text-3xl font-bold mb-6'>
 					ZERO RISK (0 RISK; 1 YEAR; 50 PEOPLE)
 				</h3>
-	 <section className="bg-gradient-to-r from-[#0A2240] to-[#0F2A4F] py-14 px-6">
-      <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6 text-white">
-        {benefits.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex items-center gap-4 bg-[#102B4E]/70 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-4 hover:bg-[#143764]/80 transition"
-          >
-            <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-lg shrink-0">
-              {item.icon}
-            </div>
-            <p className="text-base leading-snug">{item.title}</p>
-          </div>
-        ))}
-      </div>
-			</section>
+				<section className='bg-gradient-to-r from-[#0A2240] to-[#0F2A4F] py-14 px-6'>
+					<div className='max-w-5xl mx-auto grid sm:grid-cols-2 gap-6 text-white'>
+						{benefits.map((item, idx) => (
+							<div
+								key={idx}
+								className='flex items-center gap-4 bg-[#102B4E]/70 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-4 hover:bg-[#143764]/80 transition'
+							>
+								<div className='flex items-center justify-center w-12 h-12 bg-white/10 rounded-lg shrink-0'>
+									{item.icon}
+								</div>
+								<p className='text-base leading-snug'>{item.title}</p>
+							</div>
+						))}
+					</div>
+				</section>
 
 				<p className='mt-6 text-sm text-gray-700'>
 					Eligibility:
@@ -286,48 +308,50 @@ export default function ExploreOpportunities() {
 					<br />✔ 50+ employees hired locally within the first year
 				</p>
 			</div>
+		
 			<section className='w-full bg-white'>
-			<div className='max-w-7xl mx-auto px-6 py-16'>
-				<h2 className='text-3xl md:text-4xl font-bold text-center mb-3'>
-					ONE-STOP-SHOP PROGRAM
-				</h2>
-				<p className='text-center text-gray-600 max-w-3xl mx-auto mb-10'>
-					The process of registration of a legal entity in Uzbekistan can be
-					completed by IT Park on your behalf through the One Stop Shop Program.
-				</p>
+				<div className='max-w-7xl mx-auto px-6 py-16'>
+					<h2 className='text-3xl md:text-4xl font-bold text-center mb-3'>
+						ONE-STOP-SHOP PROGRAM
+					</h2>
+					<p className='text-center text-gray-600 max-w-3xl mx-auto mb-10'>
+						The process of registration of a legal entity in Uzbekistan can be
+						completed by IT Park on your behalf through the One Stop Shop
+						Program.
+					</p>
 
-				<div className='bg-[#012B55] rounded-2xl p-8'>
-					<h3 className='text-white text-xl md:text-2xl font-semibold text-center mb-8'>
-						More information about what our service includes:
-					</h3>
+					<div className='bg-[#012B55] rounded-2xl p-8'>
+						<h3 className='text-white text-xl md:text-2xl font-semibold text-center mb-8'>
+							More information about what our service includes:
+						</h3>
 
-					<div className='grid md:grid-cols-2 gap-8'>
-						{services.map((service) => (
-							<div
-								key={service.id}
-								className='bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow'
-							>
+						<div className='grid md:grid-cols-2 gap-8'>
+							{services.map(service => (
 								<div
-									className='h-40 bg-cover bg-center'
-									style={{ backgroundImage: `url(${service.image})` }}
-								/>
-								<div className='p-6'>
-									<h4 className='font-bold text-gray-900 mb-3'>
-										{service.title}
-									</h4>
-									<div className='flex items-start gap-3'>
-										<div>{service.icon}</div>
-										<p className='text-gray-700 text-sm leading-relaxed'>
-											{service.description}
-										</p>
+									key={service.id}
+									className='bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow'
+								>
+									<div
+										className='h-40 bg-cover bg-center'
+										style={{ backgroundImage: `url(${service.image})` }}
+									/>
+									<div className='p-6'>
+										<h4 className='font-bold text-gray-900 mb-3'>
+											{service.title}
+										</h4>
+										<div className='flex items-start gap-3'>
+											<div>{service.icon}</div>
+											<p className='text-gray-700 text-sm leading-relaxed'>
+												{service.description}
+											</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 		</div>
 	)
 }

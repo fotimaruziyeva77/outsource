@@ -9,4 +9,5 @@ export const API_SERVICE = {
 	category: `${baseUrl}/specialcategories/`,
 	service: `${baseUrl}/specialservices/`,
 	faqs: `${baseUrl}/faqs/`,
+	slider:`${baseUrl}/slider/`
 }
