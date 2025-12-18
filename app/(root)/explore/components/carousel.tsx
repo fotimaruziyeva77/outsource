@@ -63,7 +63,7 @@ export default function Carousel() {
       <h1 className="text-2xl md:text-3xl font-semibold uppercase ">
         Discover Ideal Office Spaces at IT Park Navoi
       </h1>
-      <p className="text-xl ">
+      <p className="text-xl mt-2 mb-2 ">
         Are you in search of contemporary, high-class office spaces? Look no further!
       </p>
 
