@@ -23,7 +23,7 @@ export default function ItParkBanner() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#7EBA28] px-6 py-3 text-sm font-medium text-white hover:bg-green-700 transition"
+              className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-700 transition"
             >
                <Phone /> Contact us
             </Link>

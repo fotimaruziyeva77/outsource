@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import axios from 'axios'
-import { Education } from '@/app/interfaces'
+
 import { API_SERVICE } from '@/lib/api-request'
 import ItParkBanner from './_components/banner'
+import StatsGrid from './_components/hii'
 
 export default function WhyNavoi() {
-	const [education, setEducation] = useState<Education[]>([])
 	const [activeTab, setActiveTab] = useState<number | null>(null)
 	const [categories, setCategories] = useState<{ id: number; title: string }[]>(
 		[]
@@ -24,19 +24,6 @@ export default function WhyNavoi() {
 		}[]
 	>([])
 
-	// 🎓 Education ma'lumotlari
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axios.get(API_SERVICE.edu)
-				setEducation(res.data)
-			} catch (err) {
-				console.error('Xatolik yuz berdi:', err)
-			}
-		}
-		fetchData()
-	}, [])
-
 	// 📦 Kategoriyalar
 	useEffect(() => {
 		const fetchCategories = async () => {
@@ -50,8 +37,6 @@ export default function WhyNavoi() {
 		}
 		fetchCategories()
 	}, [])
-
-	// 🧩 Xizmatlar
 	useEffect(() => {
 		const fetchServices = async () => {
 			try {
@@ -96,42 +81,20 @@ export default function WhyNavoi() {
 			{/* EDUCATION */}
 			<section className='py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto '>
 			 <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl md:text-3xl font-serif font-semibold text-gray-900 leading-tight mb-4">
+        <h2 className="text-4xl md:text-4xl font-serif font-semibold text-gray-900 leading-tight mb-4">
           Your Access Point to a Young, Skilled,
           <br className="hidden sm:block" />
           and Multilingual Workforce
         </h2>
 
-        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+        <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-10	">
           Navoi offers one of the youngest and most multilingual labor forces
           in Central Asia – an ideal environment for global BPO and digital
           service companies looking to scale quickly and cost-efficiently.
         </p>
       </div>
-
-		<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
-      {education?.map(item => (
-        <div
-          key={item.id}
-          className='bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow overflow-hidden flex flex-col'
-        >
-          <div className='relative w-full h-56 sm:h-64 flex-shrink-0'>
-            <Image
-              src={item.image}
-              alt={item.title || 'Education image'}
-              fill
-              className='object-cover'
-             
-            />
-          </div>
-          <div className='px-6 py-4 flex-grow'>
-            <p className='font-medium text-gray-700 text-base sm:text-lg leading-relaxed line-clamp-3'>
-              {item.title}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
+<StatsGrid/>
+	
 
 				<p className='mt-10 text-base sm:text-lg text-gray-700 max-w-7xl mx-auto px-4'>
 			With its young population, strong technical education system, and multilingual workforce, Navoi provides an ideal environment for companies looking to establish or scale IT and BPO operations.
@@ -139,29 +102,29 @@ export default function WhyNavoi() {
 			</section>
 
 			{/* CATEGORIES & SERVICES */}
-			<section className='bg-gradient-to-br from-gray-50 to-blue-50 py-12 sm:py-20 px-4 sm:px-6 lg:px-8'>
+			<section className='bg-gradient-to-br  py-12 sm:py-20 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-7xl mx-auto'>
 					{/* Sarlavha */}
-					<div className='text-center mb-10 sm:mb-16'>
-						<h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4'>
+					<div className=' mb-10 sm:mb-16'>
+						<h2 className='text-4xl md:text-4xl px-4 font-serif font-semibold text-gray-900 leading-tight mb-4'>
 							Special Categories & Services
 						</h2>
-						<p className='text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto'>
+						<p className='text-lg sm:text-xl text-gray-600 px-4 '>
 							Discover our tailored solutions designed to meet your unique needs
 							and requirements
 						</p>
 					</div>
 
 					{/* Tablar */}
-					<div className='flex flex-wrap justify-center gap-2 sm:gap-4 mb-10 sm:mb-14'>
+					<div className='flex flex-wrap  gap-2 sm:gap-4 mb-4 sm:mb-14 px-4'>
 						{categories.map(tab => (
 							<button
 								key={tab.id}
 								onClick={() => setActiveTab(tab.id)}
 								className={`px-4 sm:px-6 md:px-7 py-3 rounded-full text-sm sm:text-base font-semibold border-2 transition-all duration-300 ease-out transform hover:scale-105 ${
 									activeTab === tab.id
-										? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-200'
-										: 'bg-white text-gray-700 border-gray-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300'
+										? 'bg-[#7EBA28] text-white border-[#7EBA28] shadow-lg shadow-blue-200'
+										: 'bg-white text-gray-700 border-gray-200 hover:bg-blue-50 hover:text-[#7EBA28]'
 								}`}
 							>
 								{tab.title}
@@ -209,7 +172,7 @@ export default function WhyNavoi() {
 						</div>
 					) : (
 						<div className='text-center py-12'>
-							<div className='inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4'>
+							<div className='inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-[#7EBA28] mb-4'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									className='h-8 w-8'

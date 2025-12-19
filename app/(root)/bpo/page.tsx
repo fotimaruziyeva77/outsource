@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { motion } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
+import ItParkBanner from './components/banners'
 
 const taxes = [
 	{ value: '0%', label: 'Corporate taxes' },
@@ -243,6 +244,9 @@ export default function ItVisaPage() {
 					))}
 				</div>
 			</section>
+			<div>
+				<ItParkBanner/>
+			</div>
 		</main>
 	)
 }
